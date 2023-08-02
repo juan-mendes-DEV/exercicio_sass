@@ -1,0 +1,90 @@
+@use '../config/reset.scss';
+@use '../variaveis';
+@mixin dflex(){
+    display: flex;
+}
+@mixin dwidth(){
+    width: 100%;
+}
+
+body {
+    background-color: variaveis.$fundo;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1024px;
+    @include dwidth();
+    margin: 0 auto;
+}
+
+header {
+    background-color: #182C61;
+    position: sticky;
+    top: 0;
+    left: 0;
+    .container{
+        @include dflex();
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+    }
+}
+.menu {
+    @include dflex();
+    li{
+        font-weight: bold;
+        margin-left: 24px;
+        a{
+            color: variaveis.$font;
+            text-decoration: none;
+        }
+    }
+}
+
+section {
+    padding: 56px 0;
+
+    .products {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(3, 32.66%);
+        column-gap: 1%;
+        row-gap: 4%;
+        @include dwidth();
+
+        .product-item img {
+            @include dwidth();
+            border-radius: 16px;
+        }
+        .product-button {
+            display: block;
+            background-color:variaveis.$funBut;
+            color: variaveis.$font;
+            text-align: center;
+            padding: 8px 0;
+            border-radius: 8px;
+            margin-top: 8px;
+            text-decoration: none;
+
+            &:hover{
+                background-color: lighten(variaveis.$funBut, 8%);
+            
+            }}}}
+@media screen and (max-width: variaveis.$tablets) {
+    .container {
+        max-width: 80%;
+
+        .products {
+            grid-template-columns: repeat(2, 48.5%);
+            column-gap: 3%;}}}
+
+@media screen and (max-width: variaveis.$mobile) {
+    .products {
+        display: block;
+        .product-item  {
+            margin-bottom: 32px;
+        }}}
